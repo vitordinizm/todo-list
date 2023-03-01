@@ -1,0 +1,57 @@
+.item {
+    margin-bottom: 16px;
+    padding: 16px;
+    display: flex;
+    gap: 12px;
+    background-color: var(--gray-400);
+    border-radius: 8px;
+    position: relative;
+}
+
+.finish svg {
+    color: var(--blue);
+    cursor: pointer;
+}
+
+.finish svg:hover {
+    color: var(--blue-dark)
+}
+
+.text {
+    flex: 1;
+    font-size: var(--size-2sm);
+    color: var(--gray-100);
+}
+
+.trash {
+    background: none;
+    border: 0;
+}
+
+.trash svg {
+    color: var(--gray-300);
+    cursor: pointer;
+    height: 100%;
+}
+
+.trash svg:hover {
+    color: var(--danger);
+}
+
+.finished {
+    background-color: var(--gray-500)
+}
+
+.finished .text {
+    color: var(--gray-300);
+    text-decoration: line-through;
+}
+
+.finished .finish svg {
+    color: var(--purple-dark);
+}
+
+.finished .finish svg:hover {
+    color: var(--purple)
+}
+
