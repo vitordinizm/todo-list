@@ -1,25 +1,26 @@
-import styles from './styles.module.css'
 import { PlusCircle } from 'phosphor-react'
 import { ChangeEvent, FormEvent, InvalidEvent, useState } from 'react'
+
+import styles from './styles.module.css'
 
 interface TodoFormProps {
   onSetNewTodo: (text: string) => void
 }
 
 export function TodoForm({ onSetNewTodo }: TodoFormProps) {
-  const [textInput, setTextInput] = useState<string>('')
+  const [taskInput, setTaskInput] = useState<string>('')
 
   function handleNewTodoChange(event: ChangeEvent<HTMLInputElement>) {
     event.target.setCustomValidity('')
 
-    setTextInput(event.target.value)
+    setTaskInput(event.target.value)
   }
 
   function handleCreateNewTodo(event: FormEvent) {
     event.preventDefault()
 
-    onSetNewTodo(textInput)
-    setTextInput('')
+    onSetNewTodo(taskInput)
+    setTaskInput('')
   }
 
   function handleNewCommentInvalid(event: InvalidEvent<HTMLInputElement>) {
@@ -31,7 +32,7 @@ export function TodoForm({ onSetNewTodo }: TodoFormProps) {
       <input
         type="text"
         placeholder="Adicionar uma nova tarefa"
-        value={textInput}
+        value={taskInput}
         onChange={handleNewTodoChange}
         onInvalid={handleNewCommentInvalid}
         required

@@ -2,8 +2,8 @@ import { useEffect, useState } from 'react'
 import { TodoForm } from './components/TodoForm'
 import { TodoItem } from './components/TodoItem'
 
-import clipboardIcon from '../../assets/clipboard-icon.svg'
 import styles from './styles.module.css'
+import clipboardIcon from '../../assets/clipboard-icon.svg'
 
 export interface TodoListProps {
   id: number
@@ -15,7 +15,7 @@ export function Home() {
   const [todoList, setTodoList] = useState<TodoListProps[]>([])
   const [finishedTodos, setFinishedTodos] = useState<number>(0)
 
-  const storageKey = 'ignite-todo-list'
+  const storageKey = '@ignite-todo-list'
 
   const storageTodos = localStorage.getItem(storageKey)
 
@@ -45,16 +45,16 @@ export function Home() {
     }
   }
 
-  const markTodoHasFinished = (id: number) => {
-    setTodoList(
-      todoList.map((todo) => {
+  const markTodoAsFinished = (id: number) => {
+    setTodoList((state) =>
+      state.map((todo) => {
         switch (todo.id) {
           case id:
             if (!todo.finished) {
-              setFinishedTodos((state) => state + 1)
+              setFinishedTodos(finishedTodos + 1)
               return { ...todo, finished: true }
             } else {
-              setFinishedTodos((state) => state - 1)
+              setFinishedTodos(finishedTodos - 1)
               return { ...todo, finished: false }
             }
           default:
@@ -67,7 +67,7 @@ export function Home() {
   const removeTodo = (id: number, finished: boolean) => {
     const filteredTodos = todoList.filter((todo) => todo.id !== id)
 
-    if (todoList.length === 1) localStorage.removeItem(storageKey)
+    if (todoList.length) localStorage.removeItem(storageKey)
 
     if (finished) setFinishedTodos((state) => state - 1)
 
@@ -108,7 +108,7 @@ export function Home() {
                 id={todo.id}
                 text={todo.text}
                 finished={todo.finished}
-                onMarkTodoHasFinished={markTodoHasFinished}
+                onMarkTodoAsFinished={markTodoAsFinished}
                 onRemoveTodo={removeTodo}
               />
             ))}
