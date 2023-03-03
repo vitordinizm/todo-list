@@ -1,6 +1,6 @@
 {
   "name": "ignite-todo-list",
-  "description": "Desafio 01 - Praticando os conceitos do ReactJS",
+  "description": "Desafio do módulo Fundamentos do ReactJS",
   "private": true,
   "version": "1.0.0",
   "type": "module",
