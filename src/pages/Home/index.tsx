@@ -15,7 +15,7 @@ export function Home() {
   const [todoList, setTodoList] = useState<TodoListProps[]>([])
   const [finishedTodos, setFinishedTodos] = useState<number>(0)
 
-  const storageKey = '@ignite-todo-list'
+  const storageKey = '@ignite-todo-list-todo-list-1.0.0'
 
   const storageTodos = localStorage.getItem(storageKey)
 
