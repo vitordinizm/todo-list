@@ -1,0 +1,19 @@
+.empty {
+    padding: 64px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-top: 1px solid var(--gray-400);
+    border-radius: 8px;
+}
+
+.empty p {
+    margin-top: 1rem;
+    font-weight: 700;
+}
+
+.emptyMessage {
+    font-size: var(--size-md);
+    color: var(--gray-300);
+    margin-bottom: .1rem;
+}

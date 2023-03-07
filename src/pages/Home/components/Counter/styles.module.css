@@ -1,0 +1,30 @@
+.info {
+    margin-bottom: 19px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.created {
+    display: flex;
+    gap: .5rem;
+    font-size: var(--size-2sm);
+    font-weight: 700;
+    color: var(--blue);
+}
+
+.done {
+    display: flex;
+    gap: .5rem;
+    font-size: var(--size-2sm);
+    font-weight: 700;
+    color: var(--purple);
+}
+
+.counter {
+    padding: 2px 8px;
+    background-color: var(--gray-400);
+    font-size: var(--size-1sm);
+    font-weight: 700;
+    color: var(--gray-200);
+    border-radius: 999px;
+}

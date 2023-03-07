@@ -1,14 +1,19 @@
 import { PlusCircle } from 'phosphor-react'
-import { ChangeEvent, FormEvent, InvalidEvent, useState } from 'react'
+import {
+  ChangeEvent,
+  FormEvent,
+  InvalidEvent,
+  useContext,
+  useState,
+} from 'react'
+import { TodoContext } from '../../../../contexts/TodoContext'
 
 import styles from './styles.module.css'
 
-interface TodoFormProps {
-  onSetNewTodo: (text: string) => void
-}
-
-export function TodoForm({ onSetNewTodo }: TodoFormProps) {
+export function TodoForm() {
   const [taskInput, setTaskInput] = useState<string>('')
+
+  const { createNewTodo } = useContext(TodoContext)
 
   function handleNewTodoChange(event: ChangeEvent<HTMLInputElement>) {
     event.target.setCustomValidity('')
@@ -19,7 +24,7 @@ export function TodoForm({ onSetNewTodo }: TodoFormProps) {
   function handleCreateNewTodo(event: FormEvent) {
     event.preventDefault()
 
-    onSetNewTodo(taskInput)
+    createNewTodo(taskInput)
     setTaskInput('')
   }
 

@@ -1,45 +1,40 @@
 import { Circle, CheckCircle, Trash } from 'phosphor-react'
-import { TodoListProps } from '../..'
+import { useContext } from 'react'
+import { TodoContext } from '../../../../contexts/TodoContext'
 
 import styles from './styles.module.css'
 
-interface TodoItemProps extends TodoListProps {
-  onMarkTodoAsFinished: (id: number) => void
-  onRemoveTodo: (id: number, finished: boolean) => void
+interface TodoItemProps {
+  id: number
 }
 
-export function TodoItem({
-  id,
-  text,
-  finished,
-  onMarkTodoAsFinished,
-  onRemoveTodo,
-}: TodoItemProps) {
+export function TodoItem({ id }: TodoItemProps) {
+  const { todos, markTodoAsFinished, removeTodo } = useContext(TodoContext)
+
+  const currentTodoIndex = todos.findIndex((todo) => todo.id === id)
+
+  const todo = todos[currentTodoIndex]
+
   const handleMarkTodoAsFinished = () => {
-    onMarkTodoAsFinished(id)
+    markTodoAsFinished(id)
   }
 
   const handleRemoveTodo = () => {
-    onRemoveTodo(id, finished)
+    removeTodo(id, todo.finished)
   }
 
   return (
-    <li
-      className={`${styles.item} ${finished ? styles.finished : ''}`}
-      data-finished={finished}
-      key={id}
-    >
-      <label className={styles.finish} htmlFor={`${id}`}>
-        {finished ? <CheckCircle size={18} /> : <Circle size={18} />}
+    <li className={`${styles.item} ${todo.finished ? styles.finished : ''}`}>
+      <label className={styles.finish} htmlFor={String(id)}>
+        {todo.finished ? <CheckCircle size={18} /> : <Circle size={18} />}
       </label>
       <input
         type="checkbox"
-        id={`${id}`}
-        data-checked={finished}
+        id={String(id)}
         onClick={handleMarkTodoAsFinished}
         hidden
       />
-      <span className={styles.text}>{text}</span>
+      <span className={styles.text}>{todo.text}</span>
       <button className={styles.trash} onClick={handleRemoveTodo}>
         <Trash size={18} />
       </button>

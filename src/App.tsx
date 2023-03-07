@@ -1,13 +1,14 @@
 import { Header } from './components/Header'
+import { TodoContextProvider } from './contexts/TodoContext'
 import { Home } from './pages/Home'
 
 import './styles/global.css'
 
 export function App() {
   return (
-    <div className="App">
+    <TodoContextProvider>
       <Header />
       <Home />
-    </div>
+    </TodoContextProvider>
   )
 }
