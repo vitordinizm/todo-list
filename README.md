@@ -1,4 +1,4 @@
-# Ignite To Do List
+# To Do List
 
 ## Descrição do projeto
 
