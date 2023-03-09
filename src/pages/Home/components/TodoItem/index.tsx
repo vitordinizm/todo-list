@@ -24,7 +24,11 @@ export function TodoItem({ id }: TodoItemProps) {
   }
 
   return (
-    <li className={`${styles.item} ${todo.finished ? styles.finished : ''}`}>
+    <li
+      className={
+        todo.finished ? `${styles.item} ${styles.finished}` : styles.item
+      }
+    >
       <label className={styles.finish} htmlFor={String(id)}>
         {todo.finished ? <CheckCircle size={18} /> : <Circle size={18} />}
       </label>
